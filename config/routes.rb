@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root to: 'users#index'
   get 'users/new', to: 'users#new'
-  get "users/show"
-  get "users/edit"
+  get 'users/:id', to: 'users#show', as: 'user'
+  get 'users/:id/edit', to: 'users#edit', as: 'edit_user'
+  patch 'users/:id', to: 'users#update', as: 'update_user'
   post 'users', to: 'users#create'
+  delete 'users/:id', to: 'users#destroy', as: 'destroy_user'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
